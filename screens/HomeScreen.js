@@ -6,7 +6,6 @@ import { GooglePlacesAutocomplete } from "react-native-google-places-autocomplet
 import { GOOGLE_MAPS_APIKEY } from "@env";
 import { useDispatch } from "react-redux";
 import {
-  ScaleFromCenterAndroid,
   setDestination,
   setOrigin,
 } from "../slices/navSlice";
