@@ -7,6 +7,7 @@ import { GOOGLE_MAPS_APIKEY } from "@env";
 import { useDispatch } from "react-redux";
 import { setDestination } from "../slices/navSlice";
 import { useNavigation } from "@react-navigation/core";
+import NavFavorites from "./NavFavorites";
 
 const NavigateCard = () => {
   const dispatch = useDispatch();
@@ -16,29 +17,32 @@ const NavigateCard = () => {
     <SafeAreaView style={tw`bg-white flex-1`}>
       <Text style={tw`text-center py-5 text-xl`}>Good Morning, Jonathan</Text>
       <View style={tw`border-t border-gray-200 flex-shrink`}>
-        <GooglePlacesAutocomplete
-          placeholder="Where to?"
-          styles={toInputBoxStyles}
-          fetchDetails={true}
-          returnKeyType={"search"}
-          minLength={2}
-          onPress={(data, details = null) => {
-            dispatch(
-              setDestination({
-                location: details.geometry.location,
-                description: data.description,
-              })
-            );
-            navigation.navigate("RideOptionsCard");
-          }}
-          enablePoweredByContainer={false}
-          query={{
-            key: GOOGLE_MAPS_APIKEY,
-            language: "en",
-          }}
-          nearbyPlacesAPI="GooglePlacesSearch"
-          debounce={400}
-        />
+        <View>
+          <GooglePlacesAutocomplete
+            placeholder="Where to?"
+            styles={toInputBoxStyles}
+            fetchDetails={true}
+            returnKeyType={"search"}
+            minLength={2}
+            onPress={(data, details = null) => {
+              dispatch(
+                setDestination({
+                  location: details.geometry.location,
+                  description: data.description,
+                })
+              );
+              navigation.navigate("RideOptionsCard");
+            }}
+            enablePoweredByContainer={false}
+            query={{
+              key: GOOGLE_MAPS_APIKEY,
+              language: "en",
+            }}
+            nearbyPlacesAPI="GooglePlacesSearch"
+            debounce={400}
+          />
+        </View>
+        <NavFavorites />
       </View>
     </SafeAreaView>
   );
