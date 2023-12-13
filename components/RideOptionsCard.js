@@ -7,7 +7,7 @@ import {
   TouchableOpacity,
   View,
 } from "react-native";
-import { useNavigation } from "@react-navigation/core";
+import { useNavigation } from "@react-navigation/native";
 import { Icon } from "react-native-elements";
 import { FlatList } from "react-native-gesture-handler";
 import tw from "tailwind-react-native-classnames";
